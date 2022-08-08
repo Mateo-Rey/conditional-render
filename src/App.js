@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Loaded from "./Loaded";
+import Loading from "./Loading.jsx";
+import { useState } from "react";
+import { render } from "@testing-library/react";
 function App() {
+  const [isLoaded, setIsLoaded] = useState(true);
+  const [objectexample, setobjectexample] = useState({
+    name: "name of object",
+  });
+  const [username, setUsername] = useState('')
+
+  const ternary = isLoaded ? "yes" : "no";
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1> Username is:{username || "Guest"}</h1>
+      <h1>{
+          isLoaded &&
+          <>
+            this is really Loaded
+            <Loaded/>
+          </>
+        
+        }</h1>
+      <button
+        onClick={() => {
+          setIsLoaded(!isLoaded);
+        }}
+      >
+        Change Loaded
+      </button>
     </div>
   );
 }
