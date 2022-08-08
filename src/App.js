@@ -9,7 +9,7 @@ function App() {
     name: "name of object",
   });
   const [username, setUsername] = useState('')
-
+  const numbers = [1,2,3,4,5,6,7,8,9,0]
   const ternary = isLoaded ? "yes" : "no";
   return (
     <div className="App">
@@ -17,7 +17,9 @@ function App() {
       <h1>{
           isLoaded &&
           <>
-            this is really Loaded
+            {numbers.map((num) => {
+              return num*3 + num*2
+            })}
             <Loaded/>
           </>
         
